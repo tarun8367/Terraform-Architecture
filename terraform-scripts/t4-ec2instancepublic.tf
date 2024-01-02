@@ -5,7 +5,7 @@ module "ec2_public" {
   version = "5.6.0"
   name    = "${var.environment}-BastionHost"
   #instance_count         = 5
-  ami                    = data.aws_ami.amzubuntu.id
+  ami                    = "ami-008fed80470085bec"
   instance_type          = var.instance_type
   key_name               = var.instance_keypair
   subnet_id              = module.vpc.public_subnets[0]

@@ -12,7 +12,7 @@ resource "aws_launch_template" "my_launch_template1" {
   name_prefix = "${local.name}-"
   #name = "my-launch-template"
   description   = "My Launch template"
-  image_id      = data.aws_ami.amzubuntu.id
+  image_id      = "ami-008fed80470085bec"
   instance_type = var.instance_type
 
   vpc_security_group_ids = [module.private_sg.security_group_id]
