@@ -2,28 +2,28 @@
 echo "RDS Endpoint: ${rds_endpoint}" >> /tmp/db-app.log
 sudo apt-get install git
 
-sudo git clone https://github.com/LokeshJavvaji/webapp.git
+sudo git clone https://github.com/tarun8367/web-app.git
 
 sudo mv /var/www/html/index.html  /var/www/html/index.html.bkp
 
-sudo mv Devops_Project_with_Automation/webapp/webapp/* /var/www/html/
+sudo mv web-app/* /var/www/html/
 
 #sudo chown -R apache:apache /var/www/html/demoapp
 
 
-mysql -h ${rds_endpoint} -u admin -plokesh123 recruitment_db < /var/www/html/Recruitment_Management_System/database/recruitment_db.sql
+mysql -h ${rds_endpoint} -u admin -padmin123 recruitment_db < /var/www/html/orms/database/orms_db.sql
 
-sudo chown -R apache:apache /var/www/html/Recruitment_Management_System
+sudo chown -R apache:apache /var/www/html/orms
 
               # Configure database connection in PHP
 sudo echo "<?php
         
-        \$conn = new mysqli('${rds_endpoint}', 'admin' , 'lokesh123' , 'recruitment_db');
+        \$conn = new mysqli('${rds_endpoint}', 'admin' , 'admin123' , 'orms_db');
 
          if (\$conn->connect_error) {
             die('Connection failed: ' . \$conn->connect_error);
          }
-         ?>"  >  /var/www/html/Recruitment_Management_System/admin/db_connect.php
+         ?>"  >  /var/www/html/orms/admin/db_connect.php
 # Corrected PHP Script
 sudo apt update
 sudo apt install ruby-full

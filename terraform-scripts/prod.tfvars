@@ -1,5 +1,5 @@
 # Environment
-environment = "dev"
+environment = "stag"
 # VPC Variables
 vpc_name = "myvpc"
 vpc_cidr_block = "10.0.0.0/16"
@@ -18,9 +18,9 @@ instance_keypair = "project-key"
 private_instance_count = 2
 
 #DNS Variables
-dns_name = "dev-orms.thetkc.shop"
-#RDS
+dns_name = "prod-orms.thetkc.shop"
 
+#RDS Variables
 db_name                = "orms_db"
-db_instance_identifier = "ormsdb1"
+db_instance_identifier = "recruitmentdb2"
 db_username            = "admin"

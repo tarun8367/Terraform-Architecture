@@ -60,7 +60,7 @@ module "alb" {
           }]
           conditions = [{
             path_pattern = {
-              values = ["/Recruitment_Management_System*"]
+              values = ["/orms*"]
             }
           }]
         }# End of myapp1-rule
@@ -83,7 +83,7 @@ module "alb" {
       health_check = {
         enabled             = true
         interval            = 30
-        path                = "/Recruitment_Management_System/index.php"
+        path                = "/orms/index.php"
         port                = "traffic-port"
         healthy_threshold   = 3
         unhealthy_threshold = 3

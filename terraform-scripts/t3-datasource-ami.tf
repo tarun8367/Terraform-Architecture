@@ -1,10 +1,10 @@
 # Get latest AMI ID for Amazon Linux2 OS
 data "aws_ami" "amzubuntu" {
   most_recent = true
-  #owners = [ "424878232361" ]
+  owners = [ "099720109477" ]
   filter {
     name = "name"
-    values = [ "Recruitment-ubuntu*" ]
+    values = [ "ubuntu/images/*ubuntu-jammy-22.04-amd64-server-*" ]
   }
   filter {
     name = "root-device-type"
