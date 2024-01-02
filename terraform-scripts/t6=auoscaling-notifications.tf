@@ -6,7 +6,7 @@
 resource "aws_sns_topic" "myasg_sns_topic" {
   #name = "myasg-sns-topic-${random_pet.this.id}"
   name = "${local.name}-${random_pet.this.id}"
-} 
+}
 
 ## SNS - Subscription
 resource "aws_sns_topic_subscription" "myasg_sns_topic_subscription" {
@@ -24,5 +24,5 @@ resource "aws_autoscaling_notification" "myasg_notifications" {
     "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
     "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
-  topic_arn = aws_sns_topic.myasg_sns_topic.arn 
+  topic_arn = aws_sns_topic.myasg_sns_topic.arn
 }

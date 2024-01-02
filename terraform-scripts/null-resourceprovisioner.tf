@@ -8,7 +8,7 @@ resource "null_resource" "name" {
     user        = "ubuntu"
     password    = ""
     private_key = file("private-key/terraform-key.pem")
-    timeout = "30s"
+    timeout     = "30s"
   }
 
   # File Provisioner: Copies the terraform-key.pem file to /tmp/terraform-key.pem
@@ -24,5 +24,5 @@ resource "null_resource" "name" {
     ]
   }
 
-  
+
 }

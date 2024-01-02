@@ -1,18 +1,18 @@
 # Create AWS RDS Database
 module "rdsdb" {
-  source  = "terraform-aws-modules/rds/aws"
+  source = "terraform-aws-modules/rds/aws"
   #version = "2.34.0"
   #version = "3.0.0"
   version = "6.3.0"
-  
+
   identifier = var.db_instance_identifier
 
   #name     = var.db_name  # Initial Database Name - DEPRECATED
-  db_name     = var.db_name  # Added as part of Module v6.3.0
-  username = var.db_username
-  password = var.db_password
+  db_name                     = var.db_name # Added as part of Module v6.3.0
+  username                    = var.db_username
+  password                    = var.db_password
   manage_master_user_password = false # Added as part of Module v6.3.0
-  port     = 3306
+  port                        = 3306
 
 
   multi_az               = true
