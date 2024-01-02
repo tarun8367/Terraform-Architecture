@@ -1,0 +1,41 @@
+#! /bin/bash
+echo "RDS Endpoint: ${rds_endpoint}" >> /tmp/db-app.log
+sudo apt-get install git
+
+sudo git clone https://github.com/LokeshJavvaji/webapp.git
+
+sudo mv /var/www/html/index.html  /var/www/html/index.html.bkp
+
+sudo mv Devops_Project_with_Automation/webapp/webapp/* /var/www/html/
+
+#sudo chown -R apache:apache /var/www/html/demoapp
+
+
+mysql -h ${rds_endpoint} -u admin -plokesh123 recruitment_db < /var/www/html/Recruitment_Management_System/database/recruitment_db.sql
+
+sudo chown -R apache:apache /var/www/html/Recruitment_Management_System
+
+              # Configure database connection in PHP
+sudo echo "<?php
+        
+        \$conn = new mysqli('${rds_endpoint}', 'admin' , 'lokesh123' , 'recruitment_db');
+
+         if (\$conn->connect_error) {
+            die('Connection failed: ' . \$conn->connect_error);
+         }
+         ?>"  >  /var/www/html/Recruitment_Management_System/admin/db_connect.php
+# Corrected PHP Script
+sudo apt update
+sudo apt install ruby-full
+sudo apt install wget
+cd /home/ubuntu
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+
+sudo service codedeploy-agent status
+sudo systemctl restart mysql
+
+sudo systemctl restart apache2
+
+sudo apt-get install -y telnet
