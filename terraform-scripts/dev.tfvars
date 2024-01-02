@@ -18,9 +18,9 @@ instance_keypair       = "terraform-key"
 private_instance_count = 2
 
 #DNS Variables
-dns_name = "dev-orms.thetkc.shop"
+dns_name = "dev-enrollment.thetkc.shop"
 #RDS
 
-db_name                = "orms_db"
-db_instance_identifier = "ormsdb1"
+db_name                = "enrollment_db"
+db_instance_identifier = "enrollmentdb1"
 db_username            = "admin"

@@ -11,43 +11,19 @@ sudo mv web-app/* /var/www/html/
 #sudo chown -R apache:apache /var/www/html/demoapp
 
 
-mysql -h ${rds_endpoint} -u admin -padmin123 orms_db < /var/www/html/orms/database/orms_db.sql
+mysql -h ${rds_endpoint} -u admin -padmin enrollment_db < /var/www/html/enrollment/database/enrollment_db.sql
 
-sudo chown -R apache:apache /var/www/html/orms
+# sudo chown -R apache:apache /var/www/html/enrollment
 
               # Configure database connection in PHP
 sudo echo "<?php
-if (!defined('DB_SERVER')) {
-    require_once("../initialize.php");
-}
+        
+        \$conn = new mysqli('${rds_endpoint}', 'admin' , 'admin' , 'enrollment_db');
 
-class DBConnection
-{
-    private $host = '${rds_endpoint}';
-    private $username = 'admin';
-    private $password = 'admin123';
-    private $database = 'orms_db';
-
-    public $conn;
-
-    public function __construct()
-    {
-        if (!isset($this->conn)) {
-            $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
-
-            if (!$this->conn) {
-                echo 'Cannot connect to the database server';
-                exit;
-            }
-        }
-    }
-
-    public function __destruct()
-    {
-        $this->conn->close();
-    }
-}
-?>"  >  /var/www/html/orms/classes/DBConnection.php
+         if (\$conn->connect_error) {
+            die('Connection failed: ' . \$conn->connect_error);
+         }
+         ?>"  >  /var/www/html/enrollment/db_connect.php
 # Corrected PHP Script
 sudo apt update
 sudo apt install ruby-full

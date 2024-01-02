@@ -18,9 +18,9 @@ instance_keypair       = "project-key"
 private_instance_count = 2
 
 #DNS Variables
-dns_name = "prod-orms.thetkc.shop"
+dns_name = "prod-enrollment.thetkc.shop"
 
 #RDS Variables
-db_name                = "orms_db"
-db_instance_identifier = "recruitmentdb2"
+db_name                = "enrollment_db"
+db_instance_identifier = "enrollmentdb2"
 db_username            = "admin"
